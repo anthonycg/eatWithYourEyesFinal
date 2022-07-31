@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Search from "../components/Search";
 import Images from "../components/Images";
 import Details from "../components/Details";
+import { createContext } from "react";
 
 
 const Main = (props) => {

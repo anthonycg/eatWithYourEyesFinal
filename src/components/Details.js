@@ -7,6 +7,7 @@ const Details = (props) => {
         <div>
             <div><p>hello from details</p></div>
                 <div>
+                    <h1>{currentImage.id}</h1>
                 {/* <h1>{photo.id}</h1> */}
                 <img src={currentImage} alt="large pic of search item"></img>
                 </div>

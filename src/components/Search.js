@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import Images from "./Images";
-
-
+import { useContext } from "react";
+import photoContext from "../views/Main"
 
 const Search = (props) => {
+    const context = useContext(photoContext);
     const {getImages, photos, setPhotos} = props;
     const [term, setTerm] = useState("");
     const [location, setLocation] = useState("");
@@ -16,15 +17,11 @@ const Search = (props) => {
             headers: {
                'Content-Type': 'application/json',
             },
-            // params: {
-            //     term: "hello",
-            //     location: "austin"
-            // } 
        }
 
        let data = {
         term:term, 
-        location:location
+        location: location
     }
 
         axios.post('http://localhost:8000/results1', data, config)
