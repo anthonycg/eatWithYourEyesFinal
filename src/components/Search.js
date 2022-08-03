@@ -29,6 +29,7 @@ const Search = (props) => {
             setPhotos(res.data)
             console.log(res)
             console.log("term and location sent")
+            console.log(res.data[1].image_url)
         })
         .catch((err) => {
             console.log(err)

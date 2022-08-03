@@ -10,33 +10,43 @@ import { Link } from "react-router-dom";
 
 const Images = (props) => {
     const { photos, setPhotos} = props
-    const [modal, setModal] = useState(false)
+    const [modal, setModal] = useState({isOpen: false, imageId: null});
+    // setModal(!modal);
     
-    const toggleModal = () => {
-        setModal(!modal);
-      };
+    const toggleModal = React.useCallback(
+        (index) => () => {
+            console.log(index)
+          setModal({ isOpen: true, imageId: index });
+        },
+        []
+      );
+    
+      function closeModal() {
+        setModal({ isOpen: false, imageId: null });
+      }
 
     return (
         <div className="container">
             <div className="image-gallery">
                 {photos.map((photo, index) => {
-                    return (modal === false ?
-                    <button onClick={toggleModal} key={index} className="image-1">
-                    <img src={photo.image_url} 
-                    alt="food item pic"></img>
-                    </button>:
-                    <div className="modal">
-                        <div onClick={toggleModal} className="overlay"></div>
+                    if (modal.isOpen === false) {
+                        return (<button key={index} style={{cursor: 'pointer'}} onClick={toggleModal(index)}>
+                                <img key={index} src={photo.image_url} 
+                                alt="high quality food item">
+                                </img></button>)
+                    } else {
+                    return <div className="modal">
+                        <div onClick={closeModal} className="overlay"></div>
                             <div className="modal-content">
-                                <h2>{photo.name}</h2>
-                                    <p> {photo.name}
-                                    </p>
-                    <button className="close-modal" onClick={toggleModal}>
-                        CLOSE
-                    </button>
+                                <h2 key={index}>{photos[modal.imageId].name}</h2>
+                                    <img src={photos[modal.imageId].image_url}></img>
+
+                                <button className="close-modal" onClick={closeModal}>CLOSE</button>
                     </div>
-                    </div>
-                            )
+                            </div>
+                    }
+
+                            
                         }
                     )
                 }
