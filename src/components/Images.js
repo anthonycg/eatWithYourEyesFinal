@@ -17,31 +17,39 @@ const Images = (props) => {
         (index) => () => {
             console.log(index)
           setModal({ isOpen: true, imageId: index });
+          axios.get("https://cors-anywhere.herokuapp.com/http://opentable.herokuapp.com/api/cities")
+          .then( (res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+            console.log("error occured")
+        }) 
         },
         []
       );
     
-      function closeModal() {
+    const closeModal =() => {
         setModal({ isOpen: false, imageId: null });
       }
 
     return (
-        <div className="container">
+        <div className="container" style={{justifyContent: "center"}}>
             <div className="image-gallery">
                 {photos.map((photo, index) => {
                     if (modal.isOpen === false) {
                         return (<button key={index} style={{cursor: 'pointer'}} onClick={toggleModal(index)}>
                                 <img key={index} src={photo.image_url} 
-                                alt="high quality food item">
+                                alt="food item within a grid of other food items">
                                 </img></button>)
                     } else {
-                    return <div className="modal">
+                    return <div className="modal" >
                         <div onClick={closeModal} className="overlay"></div>
                             <div className="modal-content">
                                 <h2 key={index}>{photos[modal.imageId].name}</h2>
-                                    <img src={photos[modal.imageId].image_url}></img>
+                                    <img src={photos[modal.imageId].image_url} alt="single food item"></img>
 
-                                <button className="close-modal" onClick={closeModal}>CLOSE</button>
+                                <input type="submit" value="X" className="close-modal" onClick={closeModal}></input>
                     </div>
                             </div>
                     }

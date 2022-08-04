@@ -14,9 +14,6 @@ body {
 
 }
 
-body input, label {
-
-}
 
 
 .container {
@@ -27,7 +24,6 @@ body input, label {
     display: grid;
     grid-template-rows: repeat(3, 100px);
     grid-template-columns: repeat(2, 100px);
-    border: 2px solid green;
 }
 
 .image-gallery {
@@ -49,6 +45,7 @@ body input, label {
     align-items: center;
     justify-content: center;
     text-decoration: none;
+    border: none;
 }
 
 .image-gallery button i {
@@ -60,6 +57,7 @@ body input, label {
     border: .4rem;
     /* opacity: 0; */
     transition: opacity .5s;
+    
 }
 
 .image-gallery button::before {
@@ -161,4 +159,8 @@ body.active-modal {
     top: 10px;
     right: 10px;
     padding: 5px 7px;
+}
+
+.close-modal input {
+    position: relative;
 }
