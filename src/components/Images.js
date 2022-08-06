@@ -14,17 +14,18 @@ const Images = (props) => {
     // setModal(!modal);
     
     const toggleModal = React.useCallback(
+        
         (index) => () => {
             console.log(index)
-          setModal({ isOpen: true, imageId: index });
-          axios.get("https://cors-anywhere.herokuapp.com/http://opentable.herokuapp.com/api/cities")
-          .then( (res) => {
-            console.log(res)
-        })
-        .catch((err) => {
-            console.log(err)
-            console.log("error occured")
-        }) 
+            setModal({ isOpen: true, imageId: index });
+        //   axios.get("https://cors-anywhere.herokuapp.com/http://opentable.herokuapp.com/api/cities")
+        //   .then( (res) => {
+        //     console.log(res)
+        // })
+        // .catch((err) => {
+        //     console.log(err)
+        //     console.log("error occured")
+        // }) 
         },
         []
       );
@@ -38,13 +39,13 @@ const Images = (props) => {
             <div className="image-gallery">
                 {photos.map((photo, index) => {
                     if (modal.isOpen === false) {
-                        return (<button key={index} style={{cursor: 'pointer'}} onClick={toggleModal(index)}>
+                        return (<a href="#/"><button key={index} style={{cursor: 'pointer'}} onClick={toggleModal(index)}>
                                 <img key={index} src={photo.image_url} 
                                 alt="food item within a grid of other food items">
-                                </img></button>)
+                                </img></button></a>)
                     } else {
                     return <div className="modal" >
-                        <div onClick={closeModal} className="overlay"></div>
+                        <a href="#/"><div onClick={closeModal} className="overlay"></div></a>
                             <div className="modal-content">
                                 <h2 key={index}>{photos[modal.imageId].name}</h2>
                                     <img src={photos[modal.imageId].image_url} alt="single food item"></img>
