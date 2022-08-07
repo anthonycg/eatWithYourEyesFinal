@@ -35,7 +35,7 @@ const Login = () => {
         const response = await axios.post("http://localhost:8000/logout")
             setSuccessMsg(response.msg)
         } 
-        catch (error) { console.log(error.response)}
+        catch (error) {console.log(error.response)}
     }
 
     return (
