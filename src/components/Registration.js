@@ -1,23 +1,52 @@
+import axios from "axios";
 import React from "react";
 import { useState } from "react";
 
 const Registration = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+
+    let config = {
+        headers: {
+        'Content-Type': 'application/json',
+        },
+}
+
+    const handleRegistration = (e) => {
+        e.preventDefault()
+        axios.post("http://localhost:8000/register", {
+        firstName,
+        lastName,
+        email,
+        password,
+        confirmPassword 
+    }, config 
+)
+        .then (res =>
+            console.log(res.data)
+        )
+        .catch(err => console.log(err)
+        )
+    }
 
     return (
-        <div>
+        <div >
+            <form onSubmit={handleRegistration}>
             <label>First Name:</label>
-            <input onChange={(e)=> {setFirstName(e.target.value)}}></input>
+            <input value={firstName} onChange={(e)=> {setFirstName(e.target.value)}}></input>
             <label>Last Name:</label>
-            <input onChange={(e)=> {setLastName(e.target.value)}}></input>
+            <input value={lastName} onChange={(e)=> {setLastName(e.target.value)}}></input>
             <label>Email:</label>
-            <input onChange={(e)=> {setEmail(e.target.value)}}></input>
+            <input value={email} onChange={(e)=> {setEmail(e.target.value)}}></input>
             <label>Password:</label>
-            <input onChange={(e)=> {setPassword(e.target.value)}}></input>
+            <input value={password} onChange={(e)=> {setPassword(e.target.value)}}></input>
+            <label>Confirm Password:</label>
+            <input value={confirmPassword} onChange={(e)=> {setConfirmPassword(e.target.value)}}></input>
             <button type="submit">Sign up</button>
+            </form>
         </div>
     )
 }
