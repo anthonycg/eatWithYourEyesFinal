@@ -6,6 +6,7 @@ import Images from './components/Images';
 import Details from './components/Details';
 import Registration from "./components/Registration";
 import Login from "./components/Login";
+import CompanyRegistration from './components/CompanyRegistration';
 import Main from './views/Main';
 
 
@@ -18,7 +19,7 @@ function App() {
           <Route element={<Main />} path="/"></Route>
           <Route element={<Details/>} path="/details"></Route>
           <Route element={<Login/>} path="/login"></Route>
-          <Route element={<Registration/>} path="/register"></Route>
+          <Route element={<CompanyRegistration/>} path="/register"></Route>
         </Routes>
       </BrowserRouter>
     </div>
