@@ -7,6 +7,7 @@ import Details from './components/Details';
 import Registration from "./components/Registration";
 import Login from "./components/Login";
 import Main from './views/Main';
+import NewPost from './components/NewPost'
 
 
 
@@ -19,6 +20,7 @@ function App() {
           <Route element={<Details/>} path="/details"></Route>
           <Route element={<Login/>} path="/login"></Route>
           <Route element={<Registration/>} path="/register"></Route>
+          <Route element={<NewPost/>} path="/newpost"></Route>
         </Routes>
       </BrowserRouter>
     </div>
