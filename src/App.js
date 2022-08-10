@@ -8,6 +8,7 @@ import Registration from "./components/Registration";
 import Login from "./components/Login";
 import CompanyRegistration from './components/CompanyRegistration';
 import Main from './views/Main';
+import CreateNewPost from './components/CreateNewPost';
 
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route element={<Details/>} path="/details"></Route>
           <Route element={<Login/>} path="/login"></Route>
           <Route element={<CompanyRegistration/>} path="/register"></Route>
+          <Route element={<CreateNewPost/>} path="/newPost"></Route>
         </Routes>
       </BrowserRouter>
     </div>
