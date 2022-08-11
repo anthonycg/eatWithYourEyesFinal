@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 
-// import './App.css'
+// import './App.css'm
 
 const postImage = async (e,{image, description}) => {
     e.preventDefault()
