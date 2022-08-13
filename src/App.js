@@ -7,6 +7,10 @@ import Details from './components/Details';
 import Registration from "./components/Registration";
 import Login from "./components/Login";
 import Main from './views/Main';
+import Logout from "./components/Logout"
+
+
+
 
 
 
@@ -19,6 +23,7 @@ function App() {
           <Route element={<Details/>} path="/details"></Route>
           <Route element={<Login/>} path="/login"></Route>
           <Route element={<Registration/>} path="/register"></Route>
+          <Route element={<Logout/>} path="/logout"></Route>
         </Routes>
       </BrowserRouter>
     </div>

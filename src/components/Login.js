@@ -11,6 +11,8 @@ const Login = () => {
     const navigate = useNavigate();
 
     let config = {
+        //added withCredentials to config variable, now i see the cookie in the application tab of inspect!
+        withCredentials: true,
         headers: {
         'Content-Type': 'application/json',
         }
@@ -18,11 +20,10 @@ const Login = () => {
 
     const handleLogin = (e) => {
         e.preventDefault()
-        axios.post("http://localhost:8000/login", {
+        axios.post("http://localhost:8000/api/login", {
             email,
             password
-        },config, {withCredentials: true, 
-            credentials: 'include'}, )
+        },config)
         .then((res) => {
             console.log(res)
             navigate('/');
