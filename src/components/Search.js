@@ -4,6 +4,7 @@ import Images from "./Images";
 import { useContext } from "react";
 import photoContext from "../views/Main"
 import "../Search.css"
+import {Link} from "react-router-dom";
 
 const Search = (props) => {
     const context = useContext(photoContext);
@@ -15,10 +16,15 @@ const Search = (props) => {
         e.preventDefault()
 
         let config = {
+            //added withCredentials to config variable, now i see the cookie in the application tab of inspect!
+            withCredentials: true,
             headers: {
-               'Content-Type': 'application/json',
-            },
-       }
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'http://localhost:3000',
+            'Vary': 'Origin',
+            'Access-Control-Allow-Credentials': true
+            }
+        }
 
        let data = {
         term:term, 
@@ -40,6 +46,7 @@ const Search = (props) => {
 
     return (
         <div>
+            <button><Link to={'/logout'}>logout</Link></button>
             <div className="search-form">
                 <form onSubmit={searchHandler} >
                     <div className="search-form-items">

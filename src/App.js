@@ -1,15 +1,14 @@
-import logo from './logo.svg';
+import logo from "./logo.svg";
 
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Search from "./components/Search"
-import Images from './components/Images';
-import Details from './components/Details';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Search from "./components/Search";
+import Images from "./components/Images";
+import Details from "./components/Details";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
-import CompanyRegistration from './components/CompanyRegistration';
-import Main from './views/Main';
-
-
+import CompanyRegistration from "./components/CompanyRegistration";
+import Main from "./views/Main";
+import Logout from "./components/Logout";
 
 function App() {
   return (
@@ -17,9 +16,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<Main />} path="/"></Route>
-          <Route element={<Details/>} path="/details"></Route>
-          <Route element={<Login/>} path="/login"></Route>
-          <Route element={<CompanyRegistration/>} path="/register"></Route>
+          <Route element={<Details />} path="/details"></Route>
+          <Route element={<Login />} path="/login"></Route>
+          <Route element={<Registration />} path="/register"></Route>
+          <Route element={<Logout />} path="/logout"></Route>
         </Routes>
       </BrowserRouter>
     </div>
