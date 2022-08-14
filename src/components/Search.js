@@ -17,12 +17,14 @@ const Search = (props) => {
 
         let config = {
             //added withCredentials to config variable, now i see the cookie in the application tab of inspect!
-            withCredentials: true,
+            // withCredentials: true,
+            
             headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': 'http://localhost:3000',
-            'Vary': 'Origin',
-            'Access-Control-Allow-Credentials': true
+            //may use these controls later if user must be logged in to search
+            // 'Access-Control-Allow-Origin': 'http://localhost:3000/',
+            // 'Access-Control-Allow-Credentials': true,
+            // Accept: "application/json"
             }
         }
 
