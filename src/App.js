@@ -9,6 +9,8 @@ import Login from "./components/Login";
 import CompanyRegistration from "./components/CompanyRegistration";
 import Main from "./views/Main";
 import Logout from "./components/Logout";
+import NewPost from "./components/NewPost";
+import AllPosts from "./components/AllPosts";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
           <Route element={<Login />} path="/login"></Route>
           <Route element={<Registration />} path="/register"></Route>
           <Route element={<Logout />} path="/logout"></Route>
+          <Route element={<NewPost />} path="/api/posts/new"></Route>
+          {/* <Route element={<AllPosts />} path="/api/posts"></Route> */}
         </Routes>
       </BrowserRouter>
     </div>
