@@ -11,6 +11,7 @@ import Main from "./views/Main";
 import Logout from "./components/Logout";
 import NewPost from "./components/NewPost";
 import AllPosts from "./components/AllPosts";
+import Update from "./components/Update";
 import React, {useState} from "react";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route element={<Logout />} path="/api/logout"></Route>
           <Route element={<NewPost />} path="/api/posts/new"></Route>
           <Route element={<AllPosts />} path="/api/posts/"></Route>
+          <Route element={<Update />} path="/api/posts/:id"></Route>
           {/* <Route element={<AllPosts />} path="/api/posts"></Route> */}
         </Routes>
       </BrowserRouter>

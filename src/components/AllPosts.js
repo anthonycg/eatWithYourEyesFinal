@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const AllPosts = (props) => {
     const [postData, setPostData] = useState([]);
@@ -42,6 +42,7 @@ const AllPosts = (props) => {
                                 <p className="card-text">{post.description}</p>
                                 {post.companyWebsite ? <p><a className="btn btn-primary" href={post.companyWebsite}>Go to website</a></p> : ""}
                                 <button className="btn btn-danger" onClick={(e) => {deletePost(post._id)}}>Delete</button>
+                                <Link style={{marginLeft: "10px"}} className="btn btn-secondary" to={'/api/posts/'+post._id}>Edit</Link>
                                 
                             </div>
                         </div>
