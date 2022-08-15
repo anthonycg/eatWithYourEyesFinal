@@ -8,7 +8,7 @@ const Registration = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
-    const [errorMessage, setErrorMessage] = useState([]);
+    const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
 
     let config = {
@@ -32,7 +32,7 @@ const Registration = () => {
         )
         .catch((err) => {
             console.log(err)
-            setErrorMessage(err)
+            setErrorMessage(err.response.data.message)
         }
         )
     }
@@ -53,7 +53,7 @@ const Registration = () => {
             <input type="password" value={password} onChange={(e)=> {setPassword(e.target.value)}}></input>
             <label>Confirm Password:</label>
             <input type="password" value={confirmPassword} onChange={(e)=> {setConfirmPassword(e.target.value)}}></input>
-            <button type="submit">Sign up</button>
+            <button style={{marginTop: "10px"}} className="btn btn-primary" type="submit">Sign up</button>
             </form>
         </div>
     )

@@ -27,6 +27,8 @@ const AllPosts = (props) => {
     return (
         <div>
             <h2>All Posts</h2>
+            <Link style={{marginLeft: "10px"}} className="btn btn-success" to={'/'}>Back to Search</Link>
+            <Link style={{marginLeft: "10px"}} className="btn btn-info" to={'/api/posts/new'}>New Post</Link>
         {
             postData.map((post, index) => {
                 

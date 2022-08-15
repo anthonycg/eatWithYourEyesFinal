@@ -58,27 +58,28 @@ const Login = (props) => {
 
     return (
         <div>
+            <h1>Eat With Your Eyes</h1>
             <h2>Login</h2>
             <h5 className="error-text" style={{color:"red"}}>{errorMessage ? errorMessage: ""}</h5>
-            {
+            {/* {
                 //company Name is not an empty string
                 companyName ?
                 <p> You are logged in as {companyName}</p>:
                 <p>Please Login!</p>
-            }
-            <div style={{marginBottom:"18px"}}>
-                <Link to="/api/register">Don't have an account? Sign Up</Link>
-            </div>
+            } */}
 
             <form onSubmit={handleLogin} >
                 {/* <button onClick={handleLogout}>Logout</button> */}
                 <label>Email:</label>
                 <input value={email} onChange={(e)=> {setEmail(e.target.value)}}></input>
                 <label>Password:</label>
-                <input value={password} onChange={(e)=> {setPassword(e.target.value)}}></input>
-                <button  type="submit">Login</button>
+                <input type="password" value={password} onChange={(e)=> {setPassword(e.target.value)}}></input>
+                <button className="btn btn-primary" style={{marginLeft: "10px"}} type="submit">Login</button>
             </form>
 
+            <div style={{marginTop:"18px"}}>
+                <Link to="/api/register">Don't have an account? Sign Up</Link>
+            </div>
         </div>
     )
 }
