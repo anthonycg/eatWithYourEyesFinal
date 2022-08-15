@@ -7,8 +7,7 @@ import "../Search.css"
 import {Link} from "react-router-dom";
 
 const Search = (props) => {
-    const context = useContext(photoContext);
-    const {getImages, photos, setPhotos} = props;
+    const {getImages, photos, setPhotos, companyInfo, setCompanyInfo} = props;
     const [term, setTerm] = useState("");
     const [location, setLocation] = useState("");
 
@@ -48,7 +47,8 @@ const Search = (props) => {
 
     return (
         <div>
-            <button><Link to={'/logout'}>logout</Link></button>
+            <button><Link to={'/api/logout'}>logout</Link></button>
+            <button style={{marginLeft:"15px"}}><Link to={'/api/posts/new'}>New Post</Link></button>
             <div className="search-form">
                 <form onSubmit={searchHandler} >
                     <div className="search-form-items">

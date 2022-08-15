@@ -12,10 +12,10 @@ let config = {
 const Logout = () => {
     const navigate = useNavigate();
     useEffect(() => {
-            axios.post("http://localhost:8000/logout", {}, config)
+            axios.post("http://localhost:8000/api/logout", {}, config)
             .then((res) => {
                 console.log(res);
-                navigate("/login");
+                navigate("/api/login");
             })
             .catch(err => console.log(err))
     }, []

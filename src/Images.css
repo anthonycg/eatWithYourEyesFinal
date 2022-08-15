@@ -109,7 +109,7 @@ img {
     }
 }
 
-@media all and (max-width: 500px) {
+@media all and (max-width: 700px) {
     .image-gallery {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
@@ -117,18 +117,18 @@ img {
     }
 }
 
-body.active-modal {
+body.active-modalish {
     overflow-y: hidden;
 }
 
-.btn-modal {
+.btn-modalish {
     padding: 10px 20px;
     display: block;
     margin: 100px auto 0;
     font-size: 18px;
 }
 
-.modal, .overlay {
+.modalish, .overlay {
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -141,7 +141,7 @@ body.active-modal {
 .overlay {
     background: rgba(49,49,49,0.8);
 }
-.modal-content {
+.modalish-content {
     position: absolute;
     top: 40%;
     left: 50%;
@@ -154,13 +154,13 @@ body.active-modal {
     min-width: 300px;
 }
 
-.close-modal {
+.close-modalish {
     position: absolute;
     top: 10px;
     right: 10px;
     padding: 5px 7px;
 }
 
-.close-modal input {
+.close-modalish input {
     position: relative;
 }
