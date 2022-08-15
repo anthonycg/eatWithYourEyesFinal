@@ -7,8 +7,7 @@ import "../Search.css"
 import {Link} from "react-router-dom";
 
 const Search = (props) => {
-    const context = useContext(photoContext);
-    const {getImages, photos, setPhotos} = props;
+    const {getImages, photos, setPhotos, companyInfo, setCompanyInfo} = props;
     const [term, setTerm] = useState("");
     const [location, setLocation] = useState("");
 
@@ -48,7 +47,8 @@ const Search = (props) => {
 
     return (
         <div>
-            <button><Link to={'/logout'}>logout</Link></button>
+            <button className="btn btn-danger"><Link style={{color:"white",textDecoration:"none"}} to={'/api/logout'}>Logout</Link></button>
+            <button className="btn btn-success" style={{marginLeft:"15px"}}><Link style={{color:"white",textDecoration:"none"}} to={'/api/posts/new'}>New Post</Link></button>
             <div className="search-form">
                 <form onSubmit={searchHandler} >
                     <div className="search-form-items">
@@ -56,7 +56,7 @@ const Search = (props) => {
                     <input type="text" value={term} onChange={(e) => {setTerm(e.target.value)}}></input>
                     <label>Location:</label>
                     <input type="text" value={location} onChange={(e) => {setLocation(e.target.value)}}></input>
-                    <input type="submit" value="Search" className="search-button"/>
+                    <input type="submit" value="Search" style={{marginLeft: "10px"}} className="btn btn-primary"/>
                     </div>
                 </form>
             </div>
