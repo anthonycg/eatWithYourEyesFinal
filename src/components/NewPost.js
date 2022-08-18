@@ -6,7 +6,7 @@ import { useNavigate, Link } from "react-router-dom";
 const NewPost = () => {
     const [itemName, setItemName] = useState("");
     const [description, setDescription] = useState("");
-    const [image_url, setImage_url] = useState("");
+    const [image_url, setImage_url] = useState();
     const [companyWebsite, setCompanyWebsite] = useState("");
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState("")
@@ -15,7 +15,8 @@ const NewPost = () => {
         //added withCredentials to config variable, now i see the cookie in the application tab of inspect!
         withCredentials: true,
         headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
+
         }
     }
 
@@ -32,8 +33,8 @@ const NewPost = () => {
             navigate("/api/posts")
         })
         .catch((err) => {
-            console.log(err)
-            setErrorMessage(err.response.data.message)
+            // console.log(err)
+            // setErrorMessage(err.response.data.message)
         })
     }
 
@@ -47,7 +48,7 @@ const NewPost = () => {
                 <label>Description:</label>
                 <input value={description} onChange={(e) => setDescription(e.target.value)}></input>
                 <label>Image URL:</label>
-                <input value={image_url} onChange={(e) => setImage_url(e.target.value)}></input>
+                <input type="file" name='image_url' accept="image/*" onChange={(e) => setImage_url(e.target.files[0])}></input>
                 <label>Order Now Link:</label>
                 <input value={companyWebsite} onChange={(e) => setCompanyWebsite(e.target.value)}></input>
                 <input type="submit"></input>
