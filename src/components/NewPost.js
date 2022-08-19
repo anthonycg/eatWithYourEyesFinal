@@ -48,7 +48,7 @@ const NewPost = () => {
                 <label>Description:</label>
                 <input value={description} onChange={(e) => setDescription(e.target.value)}></input>
                 <label>Image URL:</label>
-                <input type="file" name='image_url' accept="image/*" onChange={(e) => setImage_url(e.target.files[0])}></input>
+                <input type="file" name='image_u' accept="image/*" onChange={(e) => setImage_url(e.target.files[0])}></input>
                 <label>Order Now Link:</label>
                 <input value={companyWebsite} onChange={(e) => setCompanyWebsite(e.target.value)}></input>
                 <input type="submit"></input>
