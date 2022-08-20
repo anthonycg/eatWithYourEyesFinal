@@ -19,14 +19,28 @@ const NewPost = () => {
 
         }
     }
+    const fileSelectedHandler = (e) => {
+            console.log(e.target.files[0])
+            setImage_url(e.target.files[0])
+    }
+
+    // fileUploadHandler = () => {
+    // Will use this function when I add upload button for file only.
+    // }
 
     const handleNewPost = (e) => {
+        const fd = new FormData()
+        fd.append('itemName', itemName)
+        fd.append('description', description)
+        fd.append('image_url', image_url)
+        fd.append('companyWebsite', companyWebsite)
+
         e.preventDefault()
-        axios.post("http://localhost:8000/api/posts/new", 
-        {itemName:itemName,
-        description: description,
-        image_url: image_url,
-        companyWebsite: companyWebsite}, 
+        axios.post("http://localhost:8000/api/posts/new", fd,
+        // {itemName:itemName,
+        // description: description,
+        // image_url: image_url,
+        // companyWebsite: companyWebsite}, 
         config)
         .then((res) => {
             console.log(res)
@@ -48,7 +62,7 @@ const NewPost = () => {
                 <label>Description:</label>
                 <input value={description} onChange={(e) => setDescription(e.target.value)}></input>
                 <label>Image URL:</label>
-                <input type="file" name='image_u' accept="image/*" onChange={(e) => setImage_url(e.target.files[0])}></input>
+                <input type="file" name='image_url' accept="image/*" onChange={fileSelectedHandler}></input>
                 <label>Order Now Link:</label>
                 <input value={companyWebsite} onChange={(e) => setCompanyWebsite(e.target.value)}></input>
                 <input type="submit"></input>
