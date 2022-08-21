@@ -5,10 +5,13 @@ import { useNavigate, Link } from "react-router-dom";
 const AllPosts = (props) => {
     const [postData, setPostData] = useState([]);
     const navigate = useNavigate();
+    const [base64String, setBase64String] = useState("");
     useEffect(() => {
         axios.get("http://localhost:8000/api/posts")
         .then((res) => 
-        {setPostData(res.data)
+        {
+            
+            setPostData(res.data)
             postData.reverse()
         console.log(res.data[0].itemName)})
         .catch(err => console.log(err))
@@ -18,7 +21,7 @@ const AllPosts = (props) => {
         axios.delete("http://localhost:8000/api/posts/"+postId)
         .then(res => {
             console.log(res)
-            navigate("/api/posts/new");
+            // navigate("/api/posts/new");
             
         })
         .catch(err=> console.log(err))
@@ -31,9 +34,7 @@ const AllPosts = (props) => {
             <Link style={{marginLeft: "10px"}} className="btn btn-info" to={'/api/posts/new'}>New Post</Link>
         {
             postData.map((post, index) => {
-                
                 console.log(post)
-                console.log(index)
                 return (
                         <div className="container" style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
                         <div className="card" style={{width: "28rem"}}>

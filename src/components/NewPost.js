@@ -22,6 +22,7 @@ const NewPost = () => {
     const fileSelectedHandler = (e) => {
             console.log(e.target.files[0])
             setImage_url(e.target.files[0])
+            const base64String = btoa(String.fromCharCode(...new Uint8Array(image_url)));
     }
 
     // fileUploadHandler = () => {
@@ -29,7 +30,7 @@ const NewPost = () => {
     // }
 
     const handleNewPost = (e) => {
-        const fd = new FormData()
+        const fd = new FormData();
         fd.append('itemName', itemName)
         fd.append('description', description)
         fd.append('image_url', image_url)
@@ -62,7 +63,7 @@ const NewPost = () => {
                 <label>Description:</label>
                 <input value={description} onChange={(e) => setDescription(e.target.value)}></input>
                 <label>Image URL:</label>
-                <input type="file" name='image_url' accept="image/*" onChange={fileSelectedHandler}></input>
+                <input type="file" accept="image/*" name='image_url' onChange={fileSelectedHandler}></input>
                 <label>Order Now Link:</label>
                 <input value={companyWebsite} onChange={(e) => setCompanyWebsite(e.target.value)}></input>
                 <input type="submit"></input>
