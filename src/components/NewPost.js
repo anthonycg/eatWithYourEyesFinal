@@ -48,14 +48,14 @@ const NewPost = () => {
             navigate("/api/posts")
         })
         .catch((err) => {
-            // console.log(err)
+            console.log(err)
             // setErrorMessage(err.response.data.message)
         })
     }
 
     return (
         <div className="container">
-                        <h2>New Post</h2>
+                <h2>New Post</h2>
             <h5 className="error-text" style={{color:"red"}}>{errorMessage ? errorMessage: ""}</h5>
             <form onSubmit={handleNewPost}>
                 <label>Item Name:</label>

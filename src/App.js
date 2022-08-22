@@ -12,6 +12,7 @@ import Logout from "./components/Logout";
 import NewPost from "./components/NewPost";
 import AllPosts from "./components/AllPosts";
 import Update from "./components/Update";
+import CompanyProfile from './components/CompanyProfile'
 import React, {useState} from "react";
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
           <Route element={<NewPost />} path="/api/posts/new"></Route>
           <Route element={<AllPosts />} path="/api/posts/"></Route>
           <Route element={<Update />} path="/api/posts/:id"></Route>
-          {/* <Route element={<AllPosts />} path="/api/posts"></Route> */}
+          <Route element={<CompanyProfile />} path="/api/companies/:id"></Route>
         </Routes>
       </BrowserRouter>
     </div>

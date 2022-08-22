@@ -49,6 +49,7 @@ const Search = (props) => {
         <div>
             <button className="btn btn-danger"><Link style={{color:"white",textDecoration:"none"}} to={'/api/logout'}>Logout</Link></button>
             <button className="btn btn-success" style={{marginLeft:"15px"}}><Link style={{color:"white",textDecoration:"none"}} to={'/api/posts/new'}>New Post</Link></button>
+            <button className="btn btn-dark" style={{marginLeft:"15px"}}><Link style={{color:"white",textDecoration:"none"}} to={'/api/posts/'}>Recent Posts</Link></button>
             <div className="search-form">
                 <form onSubmit={searchHandler} >
                     <div className="search-form-items">

@@ -17,14 +17,26 @@ const AllPosts = (props) => {
         .catch(err => console.log(err))
     }, [])
 
-    const deletePost = (postId) => {
-        axios.delete("http://localhost:8000/api/posts/"+postId)
+    const deletePost = (postId, imageNameInS3) => {
+        axios.delete("http://localhost:8000/api/posts/"+postId, {
+            headers: {
+            },
+            data: {
+              source: imageNameInS3
+            }})
         .then(res => {
             console.log(res)
+            console.log(imageNameInS3)
             // navigate("/api/posts/new");
             
         })
         .catch(err=> console.log(err))
+    }
+
+    const toCompanyProfile = (companyId) => {
+            
+            navigate("/api/posts/new");
+
     }
 
     return (
@@ -40,17 +52,18 @@ const AllPosts = (props) => {
                         <div className="card" style={{width: "28rem"}}>
                         <img className="card-img-top" src={post.image_url} alt="food item in card"></img>
                             <div className="card-body">
-                                <h5 className="card-title">{post.createdBy.companyName}</h5>
+                                <Link to={'/api/companies/'+post.createdBy._id}
+                                state= {{companyId: post.createdBy._id}}
+                                ><h5 className="card-title">{post.createdBy.companyName}</h5></Link>
                                 <p className="card-text">{post.itemName}</p>
                                 <p className="card-text">{post.description}</p>
                                 {post.companyWebsite ? <p><a className="btn btn-primary" href={post.companyWebsite}>Go to website</a></p> : ""}
-                                <button className="btn btn-danger" onClick={(e) => {deletePost(post._id)}}>Delete</button>
+                                <button className="btn btn-danger" onClick={(e) => {deletePost(post._id, post.imageName)}}>Delete</button>
                                 <Link style={{marginLeft: "10px"}} className="btn btn-secondary" to={'/api/posts/'+post._id}>Edit</Link>
                                 
                             </div>
                         </div>
                     </div>
-                    
                 )
             })
         }
