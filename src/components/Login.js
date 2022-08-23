@@ -58,6 +58,7 @@ const Login = (props) => {
     }
 
     return (
+        <div style={{width:"100vw"}}>
         <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
@@ -143,6 +144,8 @@ const Login = (props) => {
           </form>
         </div>
       </div>
+        </div>
+
 
         // <div>
         //     <h1>Eat With Your Eyes</h1>

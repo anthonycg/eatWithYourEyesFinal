@@ -46,23 +46,35 @@ const Search = (props) => {
     }
 
     return (
-        <div>
-            <button className="btn btn-danger"><Link style={{color:"white",textDecoration:"none"}} to={'/api/logout'}>Logout</Link></button>
-            <button className="btn btn-success" style={{marginLeft:"15px"}}><Link style={{color:"white",textDecoration:"none"}} to={'/api/posts/new'}>New Post</Link></button>
-            <button className="btn btn-dark" style={{marginLeft:"15px"}}><Link style={{color:"white",textDecoration:"none"}} to={'/api/posts/'}>Recent Posts</Link></button>
+        <div style={{width:"100vw", border:"black 1px solid"}}>
             <div className="search-form">
-                <form onSubmit={searchHandler} >
+                <form onSubmit={searchHandler} className="rounded-md shadow-sm -space-y-px">
+            <button className="btn btn-danger"><Link style={{color:"white",textDecoration:"none", fontSize:"14px"}} to={'/api/logout'}>Logout</Link></button>
+            <button className="btn btn-success" style={{marginLeft:"15px", fontSize:"14px"}}><Link style={{color:"white",textDecoration:"none"}} to={'/api/posts/new'}>New Post</Link></button>
+            <button className="btn btn-dark" style={{marginLeft:"15px", fontSize:"14px"}}><Link style={{color:"white",textDecoration:"none"}} to={'/api/posts/'}>Recent Posts</Link></button>
                     <div className="search-form-items">
-                    <label>Food item:</label>
-                    <input type="text" value={term} onChange={(e) => {setTerm(e.target.value)}}></input>
-                    <label>Location:</label>
-                    <input type="text" value={location} onChange={(e) => {setLocation(e.target.value)}}></input>
-                    <input type="submit" value="Search" style={{marginLeft: "10px"}} className="btn btn-primary"/>
+                    <label className="sr-only">Food item:</label>
+                    <input type="text" value={term} 
+                    onChange={(e) => {setTerm(e.target.value)}}
+                    placeholder="Food Item"
+                    className="h-8 w-21 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"></input>
+                    <label className="sr-only">Location:</label>
+                    <input type="text" 
+                    value={location} 
+                    onChange={(e) => {setLocation(e.target.value)}}
+                    placeholder="Location"
+                    style={{marginLeft: "10px"}} 
+                    className="h-8 w-21 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"></input>
+                    <input type="submit" value="Search" style={{marginLeft: "10px"}} 
+                    className="group relative w-20 flex justify-center py-2 px-4 border 
+                    border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 
+                    hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 
+                    focus:ring-indigo-500"/>
                     </div>
                 </form>
             </div>
                 <div>
-                <Images photos = {photos} setPhotos = {setPhotos}/>
+                <Images  photos = {photos} setPhotos = {setPhotos}/>
             </div>
         </div>
 

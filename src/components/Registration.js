@@ -40,7 +40,8 @@ const Registration = () => {
     }
 
     return (
-        <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div style={{width:"100vw"}}>
+        <div  className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <div>
             <img
@@ -53,7 +54,7 @@ const Registration = () => {
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600">
               <Link className="font-medium text-indigo-600 hover:text-indigo-500" 
-              to="/api/register">Don't have an account? Sign Up</Link>
+              to="/api/login">Already have an account? Login</Link>
             </p>
           </div>
           <form onSubmit={handleRegistration} className="mt-8 space-y-6" action="#" method="POST">
@@ -154,6 +155,7 @@ const Registration = () => {
             </div>
           </form>
         </div>
+      </div>
       </div>
 
         // <div className="container" >
