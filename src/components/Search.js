@@ -46,7 +46,7 @@ const Search = (props) => {
     }
 
     return (
-        <div style={{width:"100vw", border:"black 1px solid"}}>
+        <div style={{width:"100vw"}}>
             <div className="search-form">
                 <form onSubmit={searchHandler} className="rounded-md shadow-sm -space-y-px">
             <button className="btn btn-danger"><Link style={{color:"white",textDecoration:"none", fontSize:"14px"}} to={'/api/logout'}>Logout</Link></button>

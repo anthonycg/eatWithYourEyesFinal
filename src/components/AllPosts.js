@@ -41,14 +41,18 @@ const AllPosts = (props) => {
 
     return (
         <div>
+            <div className="rounded-md shadow-sm -space-y-px">
             <h2>All Posts</h2>
             <Link style={{marginLeft: "10px"}} className="btn btn-success" to={'/'}>Back to Search</Link>
             <Link style={{marginLeft: "10px"}} className="btn btn-info" to={'/api/posts/new'}>New Post</Link>
-        {
+            </div>
+            <div style={{display: "flex", flexWrap: "wrap", margin: "1rem"}}>
+                        {
             postData.map((post, index) => {
                 console.log(post)
                 return (
-                        <div className="container" style={{display: "flex", justifyContent:"center", alignItems:"center"}}>
+                    <div style={{margin: ".5rem"}}>
+                                                <div>
                         <div className="card" style={{width: "28rem"}}>
                         <img className="card-img-top" src={post.image_url} alt="food item in card"></img>
                             <div className="card-body">
@@ -64,9 +68,13 @@ const AllPosts = (props) => {
                             </div>
                         </div>
                     </div>
+                    </div>
+
                 )
             })
         }
+            </div>
+
         </div>
 
     )
