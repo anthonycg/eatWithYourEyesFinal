@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import {IonIcon} from "@ionic/react";
 import Main from './views/Main';
 import 'bootstrap/dist/css/bootstrap.css';
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"></link>
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
