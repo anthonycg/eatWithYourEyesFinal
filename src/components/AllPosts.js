@@ -22,7 +22,7 @@ const AllPosts = (props) => {
             headers: {
             },
             data: {
-              source: imageNameInS3
+            source: imageNameInS3
             }})
         .then(res => {
             console.log(res)

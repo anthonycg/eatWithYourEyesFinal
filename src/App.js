@@ -13,6 +13,7 @@ import NewPost from "./components/NewPost";
 import AllPosts from "./components/AllPosts";
 import Update from "./components/Update";
 import CompanyProfile from './components/CompanyProfile'
+import CompanyEdit from './components/CompanyEdit'
 import React, {useState} from "react";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route element={<AllPosts />} path="/api/posts/"></Route>
           <Route element={<Update />} path="/api/posts/:id"></Route>
           <Route element={<CompanyProfile />} path="/api/companies/:id"></Route>
+          <Route element={<CompanyEdit />} path="/api/companies/edit/:id"></Route>
         </Routes>
       </BrowserRouter>
     </div>
