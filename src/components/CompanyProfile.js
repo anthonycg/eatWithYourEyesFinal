@@ -14,6 +14,7 @@ const CompanyProfile = (props) => {
     const [companyDescription, setCompanyDesciption] = useState("");
     const [companyPhoneNumber, setCompanyPhoneNumber] = useState("");
     const [companyData, setCompanyData] = useState();
+    const backgroundIMG = 'https://i.imgur.com/41yziMZ.jpeg';
     const [modal, setModal] = useState({isOpen: false, imageId: null});
     // set Modal toggling
     const toggleModal = React.useCallback(
@@ -27,9 +28,10 @@ const CompanyProfile = (props) => {
     }
     //Get company data from backend immediately
     console.log(window.sessionStorage)
+    // console.log(location.state.companyId)
     useEffect((companyId) => {
-        // console.log(location.state.companyId)
-        axios.get('http://localhost:8000/api/companies/'+JSON.parse(sessionStorage.getItem("companyId")))
+        console.log(location.state)
+        location.state === null || undefined || "" ? axios.get('http://localhost:8000/api/companies/'+JSON.parse(sessionStorage.getItem("companyId"))) : axios.get('http://localhost:8000/api/companies/'+location.state.companyId)
         .then((res) => 
         {
             setCompanyData(res.data.companyName)
@@ -54,66 +56,39 @@ const CompanyProfile = (props) => {
         .catch(err => console.log(err))
     }, [])
 
-    // return (
-    //     <div>
-            
-    //         <h1>{JSON.parse(sessionStorage.getItem("companyName"))}</h1>
-    //         <h1>{JSON.parse(sessionStorage.getItem("companyEmail"))}</h1>
-    //     </div>
-
-    //     // <div className="container" style={{justifyContent: "center"}}>
-    //     //     <div className="image-gallery">
-    //     //         {photos.map((photo, index) => {
-    //     //             if (modal.isOpen === false) {
-    //     //                 return (<a href="#"><button key={index} style={{cursor: 'pointer'}} onClick={toggleModal(index)}>
-    //     //                         <img key={index} src={photo.image_url} 
-    //     //                         alt="food item within a grid of other food items">
-    //     //                         </img></button></a>)
-    //     //             } else {
-    //     //             return <div className="modalish" >
-    //     //                 <a href="#"><div onClick={closeModal} className="overlay"></div></a>
-    //     //                     <div className="modalish-content">
-    //     //                         <h2 key={index}>{photos[modal.imageId].name}</h2>
-    //     //                             <img src={photos[modal.imageId].image_url} alt="single food item"></img>
-
-    //     //                         <input type="submit" value="X" className="close-modalish" onClick={closeModal}></input>
-    //     //             </div>
-    //     //                     </div>
-    //     //             }
-
-                            
-    //     //                 }
-    //     //             )
-    //     //         }
-    //     //     </div>
-    //     // </div>
-    // )
-return (
-<div style={{width: "100vw",}}>
-
+    return (
+      <div style={{width: "100vw",}} className="rounded-md shadow-sm -space-y-px">
+<div className="rounded-md shadow-sm -space-y-px">
+<h2 >{JSON.parse(sessionStorage.getItem("companyName"))}'s Profile</h2>
+<button className="btn btn-danger"><Link style={{color:"white",textDecoration:"none", fontSize:"14px"}} to={'/api/logout'}>Logout</Link></button>
+<button className="btn btn-success" style={{marginLeft:"15px", fontSize:"14px"}}><Link style={{color:"white",textDecoration:"none"}} to={'/api/posts/new'}>New Post</Link></button>
+<button className="btn btn-dark" style={{marginLeft:"15px", fontSize:"14px"}}><Link style={{color:"white",textDecoration:"none"}} to={'/api/posts/'}>Recent Posts</Link></button>
+</div>
 <div className="profile-page" style={{width: "100vw",}}>
   <div className="relative block h-500-px" style={{width: "100vw",}}>
-    <div className="absolute top-0 w-full h-full bg-center bg-cover" style={{width: "100vw", backgroundColor: "blue"}}>
+    <div className="absolute top-0 w-full h-full bg-center bg-cover" style={{border: "black solid 1px", height:"15vh", width: "100vw", backgroundImage: `url(${backgroundIMG})`}}>
       <span id="blackOverlay" className="w-full h-full absolute opacity-50 bg-black"></span>
     </div>
-    <div className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style={{transform: "translateZ(0px)", width: "100vw", }}>
-      <svg className="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0" style={{width: "100vw",border:"black solid 1px"}}>
+    <div className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style={{transform: "translateZ(0px)", width: "100vw",}}>
+      <svg className="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0" style={{width: "100vw"}}>
         <polygon className="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100" style={{width: "100vw",}}></polygon>
       </svg>
     </div>
   </div>
   <div className="relative py-16 bg-blueGray-200" style={{width: "100vw",}}>
-    <div className="container mx-auto px-4" style={{width: "100vw",}}>
+    <div style={{width: "100vw",}}>
 
-        <div className="px-6" style={{width: "100vw",}}>
-          <div className="flex flex-wrap justify-center" style={{width: "100vw",}}>
-            <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center" style={{width: "100vw",}}>
-              <div className="relative">
-                <img alt="..." src="https://demos.creative-tim.com/notus-js/assets/img/team-2-800x800.jpg" className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"></img>
+        <div style={{width: "100vw",}}>
+          <div style={{width: "100vw",}}>
+            <div  style={{display:"flex", justifyContent:"center",width: "100vw",}}>
+              <div  style={{ display:"flex", justifyContent:"center", width:"5vw", height:"5vh"}}>
+                <img alt="..." src="https://anotherbrokenegg.com/sites/default/files/styles/popup_image/public/2022-08/another-broken-egg-cafe-seasonal-selections-blackened-mahi-benedict.jpg?itok=zheSdQve" 
+                className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px" 
+                style={{border:"#3203dd .15rem solid", width:"12vw",height:"12vh"}}></img>
               </div>
             </div>
             <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
-              <div className="py-6 px-3 mt-32 sm:mt-0">
+              <div>
               <Link to={'/api/companies/edit/'+JSON.parse(sessionStorage.getItem("companyId"))}
               state= {{companyId: JSON.parse(sessionStorage.getItem("companyName"))}}
               ><button className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150" type="button">
@@ -121,8 +96,8 @@ return (
                 </button></Link>
               </div>
             </div>
-            <div className="w-full lg:w-4/12 px-4 lg:order-1">
-              <div className="flex justify-center py-4 lg:pt-4 pt-8">
+            {/* <div className="w-full lg:w-4/12 px-4 lg:order-1">
+              <div className="flex justify-center">
                 <div className="mr-4 p-3 text-center">
                   <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">22</span><span className="text-sm text-blueGray-400">Friends</span>
                 </div>
@@ -132,11 +107,11 @@ return (
                 <div className="lg:mr-4 p-3 text-center">
                   <span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">89</span><span className="text-sm text-blueGray-400">Comments</span>
                 </div>
-              </div>
-            </div>
+              </div> */}
+            {/* </div> */}
           </div>
-          <div className="text-center mt-12">
-            <h3 className="text-4xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
+          <div className="text-center mt-4" style={{width: "100vw",display:"flex", flexDirection:"column", justifyContent:"center"}}>
+            <h3 className="text-4xl font-semibold leading-normal mb-2 mt-2 text-blueGray-700 mb-2">
             {JSON.parse(sessionStorage.getItem("companyName"))}
             </h3>
             <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
@@ -180,3 +155,38 @@ return (
 }
 
 export default CompanyProfile;
+
+// return (
+//     <div>
+        
+//         <h1>{JSON.parse(sessionStorage.getItem("companyName"))}</h1>
+//         <h1>{JSON.parse(sessionStorage.getItem("companyEmail"))}</h1>
+//     </div>
+
+//     // <div className="container" style={{justifyContent: "center"}}>
+//     //     <div className="image-gallery">
+//     //         {photos.map((photo, index) => {
+//     //             if (modal.isOpen === false) {
+//     //                 return (<a href="#"><button key={index} style={{cursor: 'pointer'}} onClick={toggleModal(index)}>
+//     //                         <img key={index} src={photo.image_url} 
+//     //                         alt="food item within a grid of other food items">
+//     //                         </img></button></a>)
+//     //             } else {
+//     //             return <div className="modalish" >
+//     //                 <a href="#"><div onClick={closeModal} className="overlay"></div></a>
+//     //                     <div className="modalish-content">
+//     //                         <h2 key={index}>{photos[modal.imageId].name}</h2>
+//     //                             <img src={photos[modal.imageId].image_url} alt="single food item"></img>
+
+//     //                         <input type="submit" value="X" className="close-modalish" onClick={closeModal}></input>
+//     //             </div>
+//     //                     </div>
+//     //             }
+
+                        
+//     //                 }
+//     //             )
+//     //         }
+//     //     </div>
+//     // </div>
+// )
