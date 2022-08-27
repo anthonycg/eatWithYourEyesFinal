@@ -49,6 +49,7 @@ const NewPost = () => {
         })
         .catch((err) => {
             console.log(err)
+            navigate("/api/login")
             // setErrorMessage(err.response.data.message)
         })
     }

@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 
 const Images = (props) => {
-    const { photos, setPhotos} = props
+    const { photos, setPhotos, postData} = props
     const [modal, setModal] = useState({isOpen: false, imageId: null});
     // setModal(!modal);
     
@@ -37,6 +37,12 @@ const Images = (props) => {
     return (
         <div style={{justifyContent: "center"}}>
             <div className="image-gallery">
+                {postData.map((postPhoto, index) => {
+                    return (<a href="#"><button key={index} style={{cursor: 'pointer',}} onClick={toggleModal(index)}>
+                    <img key={index} src={postPhoto.image_url} 
+                    alt="food item within a grid of other food items">
+                    </img></button></a>)
+                })}
                 {photos.map((photo, index) => {
                     if (modal.isOpen === false) {
                         return (<a href="#"><button key={index} style={{cursor: 'pointer',}} onClick={toggleModal(index)}>

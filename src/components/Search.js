@@ -10,6 +10,8 @@ const Search = (props) => {
     const {getImages, photos, setPhotos, companyInfo, setCompanyInfo} = props;
     const [term, setTerm] = useState("");
     const [location, setLocation] = useState("");
+    const [postData, setPostData] = useState([]);
+
 
     const searchHandler = (e) => { 
         e.preventDefault()
@@ -31,6 +33,14 @@ const Search = (props) => {
         term:term, 
         location: location
     }
+
+        //axios.get to the local database for our post's pictures
+        axios.get("http://localhost:8000/api/posts", data, config)
+        .then((res) => 
+        {
+        setPostData(res.data)
+        console.log(res.data)})
+        .catch(err => console.log(err))
 
         axios.post('http://localhost:8000/results1', data, config)
         .then( (res) => {
@@ -74,7 +84,7 @@ const Search = (props) => {
                 </form>
             </div>
                 <div>
-                <Images  photos = {photos} setPhotos = {setPhotos}/>
+                <Images  photos = {photos} setPhotos = {setPhotos} postData = {postData}/>
             </div>
         </div>
 
