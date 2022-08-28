@@ -66,7 +66,7 @@ const CompanyProfile = (props) => {
 </div>
 <div className="profile-page" style={{width: "100vw",}}>
   <div className="relative block h-500-px" style={{width: "100vw",}}>
-    <div className="absolute top-0 w-full h-full bg-center bg-cover" style={{border: "black solid 1px", height:"15vh", width: "100vw", backgroundImage: `url(${backgroundIMG})`}}>
+    <div className="absolute top-0 w-full h-full bg-center bg-cover" style={{height:"15vh", width: "100vw", backgroundImage: `url(${backgroundIMG})`}}>
       <span id="blackOverlay" className="w-full h-full absolute opacity-50 bg-black"></span>
     </div>
     <div className="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style={{transform: "translateZ(0px)", width: "100vw",}}>
@@ -84,14 +84,14 @@ const CompanyProfile = (props) => {
               <div  style={{ display:"flex", justifyContent:"center", width:"5vw", height:"5vh"}}>
                 <img alt="..." src="https://anotherbrokenegg.com/sites/default/files/styles/popup_image/public/2022-08/another-broken-egg-cafe-seasonal-selections-blackened-mahi-benedict.jpg?itok=zheSdQve" 
                 className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px" 
-                style={{border:"#3203dd .15rem solid", width:"12vw",height:"12vh"}}></img>
+                style={{border:"#3203dd .15rem solid", width:"15vw",height:"15vh"}}></img>
               </div>
             </div>
             <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
               <div>
               <Link to={'/api/companies/edit/'+JSON.parse(sessionStorage.getItem("companyId"))}
               state= {{companyId: JSON.parse(sessionStorage.getItem("companyName"))}}
-              ><button className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150" type="button">
+              ><button className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-5 ease-linear transition-all duration-150" type="button">
                   Edit
                 </button></Link>
               </div>

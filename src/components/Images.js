@@ -37,12 +37,27 @@ const Images = (props) => {
     return (
         <div style={{justifyContent: "center"}}>
             <div className="image-gallery">
-                {postData.map((postPhoto, index) => {
+                {postData.map((postPhoto, index, _id) => {
+                    console.log(postData)
+                    if (modal.isOpen === false) {
                     return (<a href="#"><button key={index} style={{cursor: 'pointer',}} onClick={toggleModal(index)}>
                     <img key={index} src={postPhoto.image_url} 
                     alt="food item within a grid of other food items">
                     </img></button></a>)
-                })}
+                } else {
+                    return <div className="modalish" >
+                        <a href="#"><div onClick={closeModal} className="overlay"></div></a>
+                            <div className="modalish-content">
+                                <h2 key={index}>{postData.companyName}</h2>
+                                    <img src={postData.image_url} style={{width:"50rem", height: "30rem"}} alt="single food item"></img>
+
+                                <input type="submit" value="X" className="close-modalish" onClick={closeModal}></input>
+                    </div>
+                            </div>
+                }
+            }
+        )
+                }
                 {photos.map((photo, index) => {
                     if (modal.isOpen === false) {
                         return (<a href="#"><button key={index} style={{cursor: 'pointer',}} onClick={toggleModal(index)}>
@@ -60,8 +75,6 @@ const Images = (props) => {
                     </div>
                             </div>
                     }
-
-                            
                         }
                     )
                 }

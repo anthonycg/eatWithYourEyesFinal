@@ -35,7 +35,10 @@ const Search = (props) => {
     }
 
         //axios.get to the local database for our post's pictures
-        axios.get("http://localhost:8000/api/posts", data, config)
+        axios.get("http://localhost:8000/api/posts",{ params: {
+            term:term, 
+            location: location}
+        }, config)
         .then((res) => 
         {
         setPostData(res.data)

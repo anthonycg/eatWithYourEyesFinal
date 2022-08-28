@@ -25,9 +25,10 @@ const AllPosts = (props) => {
             source: imageNameInS3
             }})
         .then(res => {
+            setPostData(postData.filter(post => post._id !== postId));
             console.log(res)
             console.log(imageNameInS3)
-            // navigate("/api/posts/new");
+            navigate("/api/posts");
             
         })
         .catch(err=> console.log(err))
