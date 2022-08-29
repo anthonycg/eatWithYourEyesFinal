@@ -84,7 +84,7 @@ const CompanyProfile = (props) => {
               <div  style={{ display:"flex", justifyContent:"center", width:"5vw", height:"5vh"}}>
                 <img alt="..." src="https://anotherbrokenegg.com/sites/default/files/styles/popup_image/public/2022-08/another-broken-egg-cafe-seasonal-selections-blackened-mahi-benedict.jpg?itok=zheSdQve" 
                 className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px" 
-                style={{border:"#3203dd .15rem solid", width:"15vw",height:"15vh"}}></img>
+                style={{border:"#3203dd .15rem solid", width:"12vw",height:"12vh"}}></img>
               </div>
             </div>
             <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">

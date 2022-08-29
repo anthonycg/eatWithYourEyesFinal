@@ -50,21 +50,26 @@ const AllPosts = (props) => {
             <div style={{display: "flex", flexWrap: "wrap", margin: "1rem"}}>
                         {
             postData.map((post, index) => {
-                console.log(post)
+                // console.log(JSON.parse(sessionStorage.getItem("companyId")))
+                // console.log(post.createdBy._id)
                 return (
                     <div style={{margin: ".5rem"}}>
-                                                <div>
-                        <div className="card" style={{width: "28rem"}}>
-                        <img className="card-img-top" src={post.image_url} alt="food item in card"></img>
-                            <div className="card-body">
-                                <Link to={'/api/companies/'+post.createdBy._id}
-                                state= {{companyId: post.createdBy._id}}
-                                ><h5 className="card-title">{post.createdBy.companyName}</h5></Link>
-                                <p className="card-text">{post.itemName}</p>
-                                <p className="card-text">{post.description}</p>
-                                {post.companyWebsite ? <p><a className="btn btn-primary" href={post.companyWebsite}>Go to website</a></p> : ""}
-                                <button className="btn btn-danger" onClick={(e) => {deletePost(post._id, post.imageName)}}>Delete</button>
-                                <Link style={{marginLeft: "10px"}} className="btn btn-secondary" to={'/api/posts/'+post._id}>Edit</Link>
+                        <div>
+                            <div className="card" style={{width: "28rem"}}>
+                            <img className="card-img-top" src={post.image_url} alt="food item in card"></img>
+                                <div className="card-body">
+                                    <Link to={'/api/companies/'+post.createdBy._id}
+                                    state= {{companyId: post.createdBy._id}}
+                                    ><h5 className="card-title">{post.createdBy.companyName}</h5></Link>
+                                    <p className="card-text">{post.itemName}</p>
+                                    <p className="card-text">{post.description}</p>
+                                    {post.companyWebsite ? <p><a className="btn btn-primary" href={post.companyWebsite}>Go to website</a></p> : ""}
+                                    {
+                                        JSON.parse(sessionStorage.getItem("companyId")) && JSON.parse(sessionStorage.getItem("companyId")) === post.createdBy._id 
+                                        ? <div><button className="btn btn-danger" onClick={(e) => {deletePost(post._id, post.imageName)}}>Delete</button> <Link style={{marginLeft: "10px"}} className="btn btn-secondary" to={'/api/posts/'+post._id}>Edit</Link></div>: ""
+                                    }
+                                    
+                                    
                                 
                             </div>
                         </div>

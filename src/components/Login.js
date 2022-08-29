@@ -63,8 +63,9 @@ const Login = (props) => {
         <div className="max-w-md w-full space-y-8">
           <div>
             <img
-              className="mx-auto h-12 w-auto"
-              src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
+            style={{width:"2rem", height:"8rem"}}
+            src="../images/RESTO.png"
+            className="mx-auto h-12 w-auto"
               alt="Workflow"
             />
             <h2 className="mt-6 text-center text-3xl tracking-tight font-bold text-gray-900">

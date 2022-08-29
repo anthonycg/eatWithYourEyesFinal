@@ -65,7 +65,8 @@ const Update = (props) => {
             </div>
             <img
               className="mx-auto h-12 w-auto"
-              src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
+              style={{width:"2rem", height:"6rem"}}
+              src="/images/RESTO.png"
               alt="Workflow"
             />
             <h2 className="mt-6 text-center text-3xl tracking-tight font-bold text-gray-900">
