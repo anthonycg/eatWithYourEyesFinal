@@ -61,6 +61,12 @@ const Search = (props) => {
     return (
         <div style={{width:"100vw"}}>
             <div className="search-form">
+            <img
+              className="mx-auto h-12 w-auto"
+              style={{width:"2rem", height:"4rem"}}
+              src="https://i.imgur.com/vEOmfZ3.png"
+              alt="Workflow"
+            />
                 <form onSubmit={searchHandler} className="rounded-md shadow-sm -space-y-px">
             <button className="btn btn-danger"><Link style={{color:"white",textDecoration:"none", fontSize:"14px"}} to={'/api/logout'}>Logout</Link></button>
             <button className="btn btn-success" style={{marginLeft:"15px", fontSize:"14px"}}><Link style={{color:"white",textDecoration:"none"}} to={'/api/posts/new'}>New Post</Link></button>

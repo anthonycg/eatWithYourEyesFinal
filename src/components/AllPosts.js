@@ -43,7 +43,13 @@ const AllPosts = (props) => {
     return (
         <div>
             <div className="rounded-md shadow-sm -space-y-px">
-            <h2>All Posts</h2>
+            <h2>Recent Posts</h2>
+            <img
+              className="mx-auto h-12 w-auto"
+              style={{width:"2rem", height:"4rem"}}
+              src="https://i.imgur.com/vEOmfZ3.png"
+              alt="Workflow"
+            />
             <Link style={{marginLeft: "10px"}} className="btn btn-success" to={'/'}>Back to Search</Link>
             <Link style={{marginLeft: "10px"}} className="btn btn-info" to={'/api/posts/new'}>New Post</Link>
             </div>
