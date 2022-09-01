@@ -36,7 +36,7 @@ const Images = (props) => {
 
     return (
         <div style={{justifyContent: "center"}}>
-            <div className="image-gallery">
+            <div className="image-gallery" style={{margin: "-10px"}}>
                 {postData.map((postPhoto, index, _id) => {
                     console.log(postData)
                     if (modal.isOpen === false) {
