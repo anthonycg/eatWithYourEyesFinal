@@ -36,12 +36,12 @@ const Images = (props) => {
 
     return (
         <div style={{justifyContent: "center"}}>
-            <div className="image-gallery" style={{margin: "-10px"}}>
+            <div className="image-gallery" style={{margin:"0rem 1.5rem"}}>
                 {postData.map((postPhoto, index, _id) => {
                     console.log(postData)
                     if (modal.isOpen === false) {
                     return (<a href="#"><button key={index} style={{cursor: 'pointer',}} onClick={toggleModal(index)}>
-                    <img key={index} src={postPhoto.image_url} 
+                    <img style={{objectFit:"contain"}} key={index} src={postPhoto.image_url} 
                     alt="food item within a grid of other food items">
                     </img></button></a>)
                 } else {
