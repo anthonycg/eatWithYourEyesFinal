@@ -70,7 +70,9 @@ const Images = (props) => {
                             <div className="modalish-content">
                                 <h2 key={index}>{photos[modal.imageId].name}</h2>
                                     <img src={photos[modal.imageId].image_url} style={{width:"50rem", height: "30rem"}} alt="single food item"></img>
-
+                                    <a href={"tel:"+photos[modal.imageId].display_phone}><h2 key={index}>{photos[modal.imageId].display_phone}</h2></a>
+                                    <h2>Get Directions:</h2>
+                                    <a href={"https://www.yelp.com/map/"+photos[modal.imageId].alias}><h2 key={index}>{photos[modal.imageId].location.display_address[0]} {photos[modal.imageId].location.display_address[1]}</h2></a>
                                 <input type="submit" value="X" className="close-modalish" onClick={closeModal}></input>
                     </div>
                             </div>
