@@ -14,6 +14,8 @@ const CompanyProfile = (props) => {
     const [companyDescription, setCompanyDesciption] = useState("");
     const [companyPhoneNumber, setCompanyPhoneNumber] = useState("");
     const [companyData, setCompanyData] = useState();
+    const [companyProfileImage, setCompanyProfileImage] = useState();
+    const [companyBannerImage, setCompanyBannerImage] = useState();
     const backgroundIMG = 'https://i.imgur.com/41yziMZ.jpeg';
     const [modal, setModal] = useState({isOpen: false, imageId: null});
     // set Modal toggling
@@ -44,6 +46,8 @@ const CompanyProfile = (props) => {
             setCompanyAddress(res.data.companyAddress)
             setCompanyDesciption(res.data.companyDescription)
             setCompanyPhoneNumber(res.data.companyPhoneNumber)
+            setCompanyProfileImage(res.data.companyProfileImage);
+            setCompanyBannerImage(res.data.companyBannerImage);
             window.sessionStorage.setItem("companyName", JSON.stringify(res.data.companyName));
             window.sessionStorage.setItem("companyEmail", JSON.stringify(res.data.email));
             window.sessionStorage.setItem("companyId", JSON.stringify(res.data._id));

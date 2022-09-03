@@ -15,6 +15,8 @@ const CompanyEdit = (props) => {
     const [companyAddress, setCompanyAddress] = useState("");
     const [companyDescription, setCompanyDesciption] = useState("");
     const [companyPhoneNumber, setCompanyPhoneNumber] = useState("");
+    const [companyProfileImage, setCompanyProfileImage] = useState();
+    const [companyBannerImage, setCompanyBannerImage] = useState();
 
     let config = {
         //added withCredentials to config variable, now i see the cookie in the application tab of inspect!
@@ -37,6 +39,8 @@ const CompanyEdit = (props) => {
             setCompanyAddress(res.data.companyAddress)
             setCompanyDesciption(res.data.companyDescription)
             setCompanyPhoneNumber(res.data.companyPhoneNumber)
+            setCompanyProfileImage(res.data.companyProfileImage);
+            setCompanyBannerImage(res.data.companyBannerImage);
         }
         )
         .catch(
@@ -190,6 +194,34 @@ const CompanyEdit = (props) => {
                 value={companyPhoneNumber}
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Phone Number"
+                />
+              </div>
+              <div>
+                <label htmlFor="companyPhoneNumber" className="sr-only">
+                  Profile Image
+                </label>
+                <input
+                onChange={(e)=> {setCompanyProfileImage(e.target.value)}}
+                type="file"
+                accept="image/*"
+                required
+                value={companyProfileImage}
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Profile Image"
+                />
+              </div>
+              <div>
+                <label htmlFor="companyPhoneNumber" className="sr-only">
+                  Banner Image
+                </label>
+                <input
+                onChange={(e)=> {setCompanyBannerImage(e.target.value)}}
+                type="file"
+                accept="image/*"
+                required
+                value={companyBannerImage}
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Banner Image"
                 />
               </div>
             </div>
