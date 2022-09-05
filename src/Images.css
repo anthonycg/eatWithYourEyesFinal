@@ -118,7 +118,7 @@ img {
 }
 
 body.active-modalish {
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
 }
 
 .btn-modalish {
@@ -143,7 +143,7 @@ body.active-modalish {
 }
 .modalish-content {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     line-height: 1.4;
@@ -152,6 +152,9 @@ body.active-modalish {
     border-radius: 3px;
     max-width: 600px;
     min-width: 300px;
+    max-height: calc(100vh - 170px);
+    min-height: calc(100vh);
+    overflow-y: auto;
 }
 
 .close-modalish {

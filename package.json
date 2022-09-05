@@ -6,6 +6,7 @@
     "@aws-sdk/client-s3": "^3.142.0",
     "@heroicons/react": "^1.0.6",
     "@ionic/react": "^6.1.15",
+    "@react-google-maps/api": "^2.12.2",
     "@reduxjs/toolkit": "^1.8.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",

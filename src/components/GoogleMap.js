@@ -1,63 +1,78 @@
+// import React from 'react'
+// import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
+// import { LoadScriptNext } from '@react-google-maps/api';
 
-<script async defer src={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&callback=initMap`}></script>
+// const options = {
+//   zoomControlOptions: {
+//     position: google.maps.ControlPosition.RIGHT_CENTER // 'right-center' ,
+//     // ...otherOptions
+//   }
+// }
+
+// function MyComponent() {
+//   const { isLoaded, loadError } = useJsApiLoader({
+//     googleMapsApiKey: "YOUR_API_KEY" // ,
+//     // ...otherOptions
+//   })
+
+//   const renderMap = () => {
+//     // wrapping to a function is useful in case you want to access `window.google`
+//     // to eg. setup options or create latLng object, it won't be available otherwise
+//     // feel free to render directly if you don't need that
+//     const onLoad = React.useCallback(
+//       function onLoad (mapInstance) {
+//         // do something with map Instance
+//       }
+//     )
+//     return <GoogleMap
+//       options={options}
+//       onLoad={onLoad}
+//     >
+//       {
+//         // ...Your map components
+//       }
+//     </GoogleMap>
+//   }
+
+//   if (loadError) {
+//     return <div>Map cannot be loaded right now, sorry.</div>
+//   }
+
+//   return isLoaded ? renderMap() : <Spinner />
+// }
 
 
-const GoogleMap = () => {
+import React from 'react'
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
-let map = google.maps.Map;
-let service= google.maps.places.PlacesService;
-let infowindow= google.maps.InfoWindow;
 
-function initMap() {
-  const sydney = new google.maps.LatLng(-33.867, 151.195);
-
-  infowindow = new google.maps.InfoWindow();
-
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: sydney,
-    zoom: 15,
-  });
-
-  const request = {
-    query: "Museum of Contemporary Art Australia",
-    fields: ["name", "geometry"],
+  const containerStyle = {
+    width: '30rem',
+    height: '30rem'
   };
+  
+  
+  const GoogleMapComponent = (props) => {
+    const {lat, long} = props
+    console.log(lat, long)
+    let center = {
+      lat: lat,
+      lng: long
+    };
+    return (
+      <LoadScript
+        googleMapsApiKey = {process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
+      >
+        <GoogleMap
+          mapContainerStyle={containerStyle}
+          center={center}
+          zoom={15}
+        >
+          { /* Child components, such as markers, info windows, etc. */ }
+          <></>
+        </GoogleMap>
+      </LoadScript>
+    )
+  }
 
-  service = new google.maps.places.PlacesService(map);
-
-  service.findPlaceFromQuery(
-    request,
-    (
-      results = google.maps.places.PlaceResult | null,
-      status = google.maps.places.PlacesServiceStatus
-    ) => {
-      if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-        for (let i = 0; i < results.length; i++) {
-          createMarker(results[i]);
-        }
-
-        map.setCenter(results[0].geometry.location);
-      }
-    }
-  );
-}
-
-function createMarker(place = google.maps.places.PlaceResult) {
-  if (!place.geometry || !place.geometry.location) return;
-
-  const marker = new google.maps.Marker({
-    map,
-    position: place.geometry.location,
-  });
-
-  google.maps.event.addListener(marker, "click", () => {
-    infowindow.setContent(place.name || "");
-    infowindow.open(map);
-  });
-}
-
-window.initMap = initMap;
-
-}
-
-export default GoogleMap;
+export default GoogleMapComponent;

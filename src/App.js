@@ -15,6 +15,7 @@ import Update from "./components/Update";
 import CompanyProfile from './components/CompanyProfile'
 import CompanyEdit from './components/CompanyEdit'
 import React, {useState} from "react";
+import GoogleMapComponent from "./components/GoogleMap";
 
 function App() {
   
@@ -32,6 +33,7 @@ function App() {
           <Route element={<Update />} path="/api/posts/:id"></Route>
           <Route element={<CompanyProfile />} path="/api/companies/:id"></Route>
           <Route element={<CompanyEdit />} path="/api/companies/edit/:id"></Route>
+          <Route element={<GoogleMapComponent />} path="/api/map"></Route>
         </Routes>
       </BrowserRouter>
     </div>

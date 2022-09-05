@@ -5,8 +5,7 @@ import {IonIcon} from "@ionic/react";
 import bxsFoodMenu from "ionicons";
 import Details from "./Details";
 import { Link } from "react-router-dom";
-
-<script async defer src={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places&callback=initMap`}></script>
+import GoogleMapComponent from "./GoogleMap";
 
 
 const Images = (props) => {
@@ -18,15 +17,15 @@ const Images = (props) => {
         
         (index) => () => {
             console.log(index)
-            setModal({ isOpen: true, imageId: index });
+            setModal({ isOpen: true, imageId: index })
         //   axios.get("https://cors-anywhere.herokuapp.com/http://opentable.herokuapp.com/api/cities")
-        //   .then( (res) => {
-        //     console.log(res)
-        // })
-        // .catch((err) => {
-        //     console.log(err)
-        //     console.log("error occured")
-        // }) 
+          .then( (res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+            console.log("error occured")
+        }) 
         },
         []
       );
@@ -71,9 +70,12 @@ const Images = (props) => {
                             <div className="modalish-content">
                                 <h2 key={index}>{photos[modal.imageId].name}</h2>
                                     <img src={photos[modal.imageId].image_url} style={{width:"50rem", height: "30rem"}} alt="single food item"></img>
-                                    <a href={"tel:"+photos[modal.imageId].display_phone}><h2 key={index}>{photos[modal.imageId].display_phone}</h2></a>
-                                    <h2>Get Directions:</h2>
-                                    <a href={"https://www.yelp.com/map/"+photos[modal.imageId].alias}><h2 key={index}>{photos[modal.imageId].location.display_address[0]} {photos[modal.imageId].location.display_address[1]}</h2></a>
+                                    <a href={"tel:"+photos[modal.imageId].display_phone}><p key={index}>{photos[modal.imageId].display_phone}</p></a>
+                                    <h6>Get Directions:</h6>
+                                    <a href={"https://www.yelp.com/map/"+photos[modal.imageId].alias}><p key={index}>{photos[modal.imageId].location.display_address[0]} {photos[modal.imageId].location.display_address[1]}</p></a>
+                                    <GoogleMapComponent 
+                                    lat = {photos[modal.imageId].coordinates.latitude}
+                                    long = {photos[modal.imageId].coordinates.longitude}/>
                                 <input type="submit" value="X" className="close-modalish" onClick={closeModal}></input>
                     </div>
                             </div>

@@ -6,7 +6,6 @@ import photoContext from "../views/Main"
 import "../Search.css"
 import {Link} from "react-router-dom";
 
-<script async defer src={`https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&callback=initMap`}></script>
 
 const Search = (props) => {
     const {getImages, photos, setPhotos, companyInfo, setCompanyInfo} = props;
