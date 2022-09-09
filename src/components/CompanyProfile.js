@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useParams, useLocation, Link } from 'react-router-dom';
+import AllCompanyPosts from './AllCompanyPosts'
 
 
 const CompanyProfile = (props) => {
@@ -141,6 +142,7 @@ const CompanyProfile = (props) => {
         </div>
       </div>
     </div>
+    <AllCompanyPosts companyId = {JSON.parse(sessionStorage.getItem("companyId"))}/>
     <footer className="relative bg-blueGray-200 pt-8 pb-6 mt-8">
   <div className="container mx-auto px-4">
     <div className="flex flex-wrap items-center md:justify-between justify-center">
