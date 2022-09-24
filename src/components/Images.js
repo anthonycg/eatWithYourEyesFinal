@@ -41,7 +41,7 @@ const Images = (props) => {
                     console.log(postData)
                     if (modal.isOpen === false) {
                     return (<a href="#"><button key={index} style={{cursor: 'pointer',}} onClick={toggleModal(index)}>
-                    <img style={{objectFit:"contain"}} key={index} src={postPhoto.image_url} 
+                    <img  key={index} src={postPhoto.image_url} 
                     alt="food item within a grid of other food items">
                     </img></button></a>)
                 } else {
