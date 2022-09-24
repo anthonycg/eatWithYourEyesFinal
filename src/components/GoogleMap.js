@@ -1,78 +1,89 @@
-// import React from 'react'
-// import { GoogleMap, useJsApiLoader } from '@react-google-maps/api'
-// import { LoadScriptNext } from '@react-google-maps/api';
-
-// const options = {
-//   zoomControlOptions: {
-//     position: google.maps.ControlPosition.RIGHT_CENTER // 'right-center' ,
-//     // ...otherOptions
-//   }
-// }
-
-// function MyComponent() {
-//   const { isLoaded, loadError } = useJsApiLoader({
-//     googleMapsApiKey: "YOUR_API_KEY" // ,
-//     // ...otherOptions
-//   })
-
-//   const renderMap = () => {
-//     // wrapping to a function is useful in case you want to access `window.google`
-//     // to eg. setup options or create latLng object, it won't be available otherwise
-//     // feel free to render directly if you don't need that
-//     const onLoad = React.useCallback(
-//       function onLoad (mapInstance) {
-//         // do something with map Instance
-//       }
-//     )
-//     return <GoogleMap
-//       options={options}
-//       onLoad={onLoad}
-//     >
-//       {
-//         // ...Your map components
-//       }
-//     </GoogleMap>
-//   }
-
-//   if (loadError) {
-//     return <div>Map cannot be loaded right now, sorry.</div>
-//   }
-
-//   return isLoaded ? renderMap() : <Spinner />
-// }
 
 
-import React from 'react'
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import {
+    Box,
+    Button,
+    ButtonGroup,
+    Flex,
+    HStack,
+    IconButton,
+    Input,
+    SkeletonText,
+    Text,
+} from "@chakra-ui/react";
 
+import {
+    useJsApiLoader,
+    GoogleMap,
+    Marker,
+    Autocomplete,
+    DirectionsRenderer,
+} from "@react-google-maps/api";
 
-  const containerStyle = {
-    width: '30rem',
-    height: '30rem'
-  };
-  
-  
-  const GoogleMapComponent = (props) => {
-    const {lat, long} = props
-    console.log(lat, long)
+import React from "react";
+import { useRef, useState } from 'react'
+
+const containerStyle = {
+    width: "10px",
+    height: "10px",
+};
+
+const libraries = ["places"];
+
+const GoogleMapComponent = (props) => {
+    const { isLoaded } = useJsApiLoader({
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+        libraries:libraries
+    });
+
+    const [map, setMap] = useState(/** @type google.maps.Map */ (null))
+    const [directionsResponse, setDirectionsResponse] = useState(null)
+    const [distance, setDistance] = useState('')
+    const [duration, setDuration] = useState('')
+
+    const { lat, long } = props;
     let center = {
-      lat: lat,
-      lng: long
+        lat: lat,
+        lng: long,
     };
+
+    if (!isLoaded) {
+      return <div><h1>Wait here</h1></div>
+    }
+
     return (
-      <LoadScript
-        googleMapsApiKey = {process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
-      >
+      
+      <Flex
+      position='relative'
+      flexDirection='column'
+      alignItems='center'
+      h='10vh'
+      w='50vw'
+    >
+      <Box position='absolute' left={0} top={0} h='100%' w='100%'>
+        {/* Google Map Box */}
         <GoogleMap
-          mapContainerStyle={containerStyle}
           center={center}
           zoom={15}
+          mapContainerStyle={{ width: '100%', height: '100%' }}
+          options={{
+            zoomControl: false,
+            streetViewControl: false,
+            mapTypeControl: false,
+            fullscreenControl: false,
+          }}
+          onLoad={map => setMap(map)}
         >
-          { /* Child components, such as markers, info windows, etc. */ }
-          <></>
+          <Marker position={center} />
+          {/* {directionsResponse && (
+            <DirectionsRenderer directions={directionsResponse} />
+          )} */}
         </GoogleMap>
-      </LoadScript>
-    )
-  }
+      </Box>
+      </Flex>
+
+
+    );
+};
 
 export default GoogleMapComponent;
