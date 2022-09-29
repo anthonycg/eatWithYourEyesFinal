@@ -5,7 +5,12 @@ import { useContext } from "react";
 import photoContext from "../views/Main"
 import "../Search.css"
 import {Link} from "react-router-dom";
+import {
+    useJsApiLoader,
+    Autocomplete,
+} from "@react-google-maps/api";
 
+const libraries = ["places"];
 
 const Search = (props) => {
     const {getImages, photos, setPhotos, companyInfo, setCompanyInfo} = props;
@@ -13,6 +18,10 @@ const Search = (props) => {
     const [location, setLocation] = useState("");
     const [postData, setPostData] = useState([]);
 
+    const { isLoaded } = useJsApiLoader({
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+        libraries:libraries
+    });
 
     const searchHandler = (e) => { 
         e.preventDefault()
@@ -49,9 +58,6 @@ const Search = (props) => {
         axios.post('http://localhost:8000/results1', data, config)
         .then( (res) => {
             setPhotos(res.data)
-            console.log(res)
-            console.log("term and location sent")
-            console.log(res.data[1].image_url)
         })
         .catch((err) => {
             console.log(err)
@@ -79,12 +85,14 @@ const Search = (props) => {
                     placeholder="Food Item"
                     className="h-8 w-21 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"></input>
                     <label className="sr-only">Location:</label>
+                    <Autocomplete>
                     <input type="text" 
                     value={location} 
                     onChange={(e) => {setLocation(e.target.value)}}
                     placeholder="Location"
                     style={{marginLeft: "10px"}} 
                     className="h-8 w-21 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"></input>
+                    </Autocomplete>
                     <input type="submit" value="Search" style={{marginLeft: "10px"}} 
                     className="group relative w-20 flex justify-center py-2 px-4 border 
                     border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 

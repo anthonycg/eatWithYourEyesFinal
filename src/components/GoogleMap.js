@@ -1,5 +1,3 @@
-
-
 import {
     Box,
     Button,
@@ -23,11 +21,6 @@ import {
 import React from "react";
 import { useRef, useState } from 'react'
 
-const containerStyle = {
-    width: "10px",
-    height: "10px",
-};
-
 const libraries = ["places"];
 
 const GoogleMapComponent = (props) => {
@@ -36,10 +29,14 @@ const GoogleMapComponent = (props) => {
         libraries:libraries
     });
 
-    const [map, setMap] = useState(/** @type google.maps.Map */ (null))
+    const [map, setMap] = useState((null))
     const [directionsResponse, setDirectionsResponse] = useState(null)
     const [distance, setDistance] = useState('')
     const [duration, setDuration] = useState('')
+
+
+    const originRef = useRef()
+    const destinationRef = useRef()
 
     const { lat, long } = props;
     let center = {
@@ -48,7 +45,11 @@ const GoogleMapComponent = (props) => {
     };
 
     if (!isLoaded) {
-      return <div><h1>Loading Google Map...</h1></div>
+      return <div><h5>Loading Google Map...</h5></div>
+    }
+
+    const calculateRoute = () => {
+      
     }
 
     return (
@@ -56,9 +57,11 @@ const GoogleMapComponent = (props) => {
       <Flex
       position='relative'
       flexDirection='column'
+      justifyContent='center'
       alignItems='center'
-      h='50vh'
-      w='50vw'
+      h='20rem'
+      w='33.05rem'
+      border='black solid 1px'
     >
       <Box position='absolute' left={0} top={0} h='100%' w='100%'>
         {/* Google Map Box */}

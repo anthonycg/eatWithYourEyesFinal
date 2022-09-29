@@ -16,9 +16,9 @@ const Images = (props) => {
 
     const toggleModal = React.useCallback(
         (index, photoID, companyPostPhotoID) => () => {
-            console.log(index);
-            console.log(photoID)
-            console.log(companyPostPhotoID)
+            // console.log(index);
+            // console.log(photoID)
+            // console.log(companyPostPhotoID)
             setModal({ isOpen: true, imageId: index });
         },
         []
@@ -113,14 +113,6 @@ const Images = (props) => {
                                     <h2 key={photoID}>
                                         {photos[modal.imageId].name}
                                     </h2>
-                                    <img
-                                        src={photos[modal.imageId].image_url}
-                                        style={{
-                                            width: "50rem",
-                                            height: "30rem",
-                                        }}
-                                        alt="single food item"
-                                    ></img>
                                     <a
                                         href={
                                             "tel:" +
@@ -162,6 +154,15 @@ const Images = (props) => {
                                                 .longitude
                                         }
                                     />
+                                    <img
+                                        src={photos[modal.imageId].image_url}
+                                        style={{
+                                            width: "50rem",
+                                            height: "30rem",
+                                            marginTop:"1rem"
+                                        }}
+                                        alt="single food item"
+                                    ></img>
                                     <input
                                         type="submit"
                                         value="X"
@@ -177,42 +178,5 @@ const Images = (props) => {
         </div>
     );
 };
-
-// <div className="container">
-//         <div className="image-gallery">
-//             {photos.map((photo, index) => {
-//                 return (
-//     <button onClick={toggleModal} className="btn-modal">
-//     Open
-//   </button>
-
-//   {if (modal) {
-//     <div className="modal">
-//       <div onClick={toggleModal} className="overlay"></div>
-//       <div className="modal-content">
-//         <h2>Hello Modal</h2>
-//         <p>
-//           Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-//           perferendis suscipit officia recusandae, eveniet quaerat assumenda
-//           id fugit, dignissimos maxime non natus placeat illo iusto!
-//           Sapiente dolorum id maiores dolores? Illum pariatur possimus
-//           quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt
-//           placeat tempora vitae enim incidunt porro fuga ea.
-//         </p>
-//         <button className="close-modal" onClick={toggleModal}>
-//           CLOSE
-//         </button>
-//       </div>
-//     </div>
-//   } else {
-//       <div className="image-gallery">
-//           {/* <Link to="/details"> */}
-//           <button onClick={toggleModal} key={index} className="image-1">
-//               <img src={photo.image_url}
-//               alt="food item pic"></img>
-//           </button>
-//           {/* </Link> */}
-//       </div>
-//   }})})}
 
 export default Images;
