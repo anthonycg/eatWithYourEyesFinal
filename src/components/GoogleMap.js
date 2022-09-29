@@ -48,7 +48,7 @@ const GoogleMapComponent = (props) => {
     };
 
     if (!isLoaded) {
-      return <div><h1>Wait here</h1></div>
+      return <div><h1>Loading Google Map...</h1></div>
     }
 
     return (
@@ -57,7 +57,7 @@ const GoogleMapComponent = (props) => {
       position='relative'
       flexDirection='column'
       alignItems='center'
-      h='10vh'
+      h='50vh'
       w='50vw'
     >
       <Box position='absolute' left={0} top={0} h='100%' w='100%'>

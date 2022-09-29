@@ -33,7 +33,6 @@ const Images = (props) => {
         <div style={{ justifyContent: "center" }}>
             <div className="image-gallery" style={{ margin: "0rem 1.5rem" }}>
                 {postData.map((postPhoto, index, _id) => {
-                    console.log(postData)
                     let companyPostPhotoID = postData._id
                     if (modal.isOpen === false) {
                         return (

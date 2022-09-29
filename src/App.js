@@ -33,7 +33,6 @@ function App() {
           <Route element={<Update />} path="/api/posts/:id"></Route>
           <Route element={<CompanyProfile />} path="/api/companies/:id"></Route>
           <Route element={<CompanyEdit />} path="/api/companies/edit/:id"></Route>
-          <Route element={<GoogleMapComponent />} path="/api/map"></Route>
         </Routes>
       </BrowserRouter>
     </div>
